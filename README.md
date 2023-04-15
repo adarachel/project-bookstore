@@ -1,4 +1,3 @@
-# "Bookstore Project."
 <a name="readme-top"></a>
 -
 
