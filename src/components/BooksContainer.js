@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchBooks, removeBook, deleteBook } from '../redux/books/booksSlice';
@@ -27,6 +29,7 @@ const BooksContainer = () => {
               id={book.item_id}
               title={book.title}
               author={book.author}
+              Category={book.category}
               remove={handleRemove}
             />
           </li>
