@@ -1,27 +1,40 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchBooks, removeBook, deleteBook } from '../redux/books/booksSlice';
 import SingleBook from './Book';
 import BookForm from './BookForm';
 import './BooksContainer.css';
 
 const BooksContainer = () => {
-  const books = useSelector((state) => state.books);
+  const books = useSelector((state) => state.books.books);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
+
+  const handleRemove = (id) => {
+    dispatch(removeBook(id));
+    dispatch(deleteBook(id));
+  };
 
   return (
-    <div className="books-container">
-      <ul className="books">
+    <>
+      <ul>
         {books.map((book) => (
-          <SingleBook
-            key={book.id}
-            id={book.id}
-            title={book.title}
-            author={book.author}
-          />
+          <li key={book.item_id}>
+            <SingleBook
+              id={book.item_id}
+              title={book.title}
+              author={book.author}
+              remove={handleRemove}
+            />
+          </li>
         ))}
       </ul>
       <div className="horizontal-divider" />
       <BookForm />
-    </div>
+    </>
   );
 };
 

@@ -1,31 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './BooksContainer.css';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../redux/books/booksSlice';
+import { addNewBook, addBook } from '../redux/books/booksSlice';
 
 const BookForm = () => {
   const dispatch = useDispatch();
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
 
-  const handleAddBook = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const title = e.target.title.value;
-    const author = e.target.author.value;
-    const id = Math.floor(Math.random() * 100000);
-    dispatch(addBook({ id, title, author }));
-    e.target.reset();
+    const newBook = {
+      item_id: Date.now(),
+      title,
+      author,
+      category: 'Nonfiction',
+    };
+    dispatch(addBook(newBook));
+    dispatch(addNewBook(newBook));
+    setAuthor('');
+    setTitle('');
   };
 
   return (
-    <div>
-      <h2 className="form-title">Add Your Book</h2>
-      <section>
-        <form className="Add-form" onSubmit={handleAddBook}>
-          <input className="input title-input" type="text" name="title" placeholder="Add Book Title" />
-          <input className="input" type="text" name="author" placeholder="Add Book Author" />
-          <button className="primary-button-big" type="submit">ADD BOOK</button>
-        </form>
-      </section>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <h2>ADD NEW BOOK</h2>
+      <input
+        id="title"
+        type="text"
+        name="Add"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Book title"
+        required
+      />
+      <input
+        id="author"
+        type="text"
+        name="Add"
+        value={author}
+        onChange={(e) => setAuthor(e.target.value)}
+        placeholder="Author"
+        required
+      />
+      <button type="submit">Add</button>
+    </form>
   );
 };
 

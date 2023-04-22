@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Book.css';
-import { useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/booksSlice';
 
 const SingleBook = (props) => {
-  const { id, title, author } = props;
-  const dispatch = useDispatch();
+  const {
+    id, title, author, remove,
+  } = props;
 
   const handleRemoveBook = () => {
-    dispatch(removeBook(id));
+    remove(id);
   };
 
   return (
@@ -33,6 +32,7 @@ SingleBook.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  remove: PropTypes.func.isRequired,
 };
 
 export default SingleBook;
