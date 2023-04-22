@@ -1,29 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import SingleBook from './Book';
 import BookForm from './BookForm';
 import './BooksContainer.css';
 
-class BooksContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      Title: 'Why Nations Fail',
-      Author: 'D. Acemoglu & James A. Robinson',
-    };
-  }
+const BooksContainer = () => {
+  const books = useSelector((state) => state.books);
 
-  render() {
-    const { Title, Author } = this.state;
-    return (
-      <div className="books-container">
-        <ul className="books">
-          <SingleBook Title={Title} Author={Author} />
-        </ul>
-        <div className="horizontal-divider" />
-        <BookForm />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="books-container">
+      <ul className="books">
+        {books.map((book) => (
+          <SingleBook
+            key={book.id}
+            id={book.id}
+            title={book.title}
+            author={book.author}
+          />
+        ))}
+      </ul>
+      <div className="horizontal-divider" />
+      <BookForm />
+    </div>
+  );
+};
 
 export default BooksContainer;
