@@ -24,10 +24,10 @@ const BooksContainer = () => {
         {books.map((book) => (
           <li key={book.item_id}>
             <SingleBook
-              category={book.category}
+              id={book.item_id}
               title={book.title}
               author={book.author}
-              remove={() => handleRemove(book.item_id)}
+              remove={handleRemove}
             />
           </li>
         ))}
