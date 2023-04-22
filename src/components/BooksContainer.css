@@ -2,6 +2,7 @@
 
 .books-container {
   padding: 4%;
+  width: 70%;
 }
 
 .books {
@@ -38,6 +39,8 @@
   display: flex;
   grid-gap: 32px;
   gap: 32px;
+  width: 80%;
+  margin-left: 5em;
 }
 
 .input {
