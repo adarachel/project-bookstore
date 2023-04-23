@@ -3,12 +3,13 @@
 
 .navBar {
   padding: 24px 4%;
-  background-color: #fff;
+  background-color: #fafafa;
   border-bottom: 1px solid #e8e8e8;
   display: flex;
   align-items: center;
   grid-gap: 40px;
   gap: 40px;
+  width: 80%;
 }
 
 .links {
@@ -33,4 +34,17 @@
   font-size: 1.875rem;
   font-weight: 700;
   color: #0290ff;
+}
+
+.icon-button {
+  cursor: pointer;
+  width: 2.813rem;
+  height: 2.813rem;
+  border-radius: 50%;
+  border: 1px solid #e8e8e8;
+  background-color: #fff;
+}
+
+.icon {
+  width: 20px;
 }

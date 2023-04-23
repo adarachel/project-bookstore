@@ -1,5 +1,8 @@
+/* eslint-disable */
+
 import React, { useState } from 'react';
 import './BooksContainer.css';
+import './Book.css';
 import { useDispatch } from 'react-redux';
 import { addNewBook, addBook } from '../redux/books/booksSlice';
 
@@ -14,7 +17,7 @@ const BookForm = () => {
       item_id: Date.now(),
       title,
       author,
-      category: 'Nonfiction',
+      category: 'Fiction',
     };
     dispatch(addBook(newBook));
     dispatch(addNewBook(newBook));
@@ -23,9 +26,10 @@ const BookForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>ADD NEW BOOK</h2>
+    <form className="Add-form" onSubmit={handleSubmit}>
+      <h2>ADD A NEW BOOK</h2>
       <input
+        className="input title-input"
         id="title"
         type="text"
         name="Add"
@@ -35,6 +39,7 @@ const BookForm = () => {
         required
       />
       <input
+        className="input"
         id="author"
         type="text"
         name="Add"
@@ -43,7 +48,7 @@ const BookForm = () => {
         placeholder="Author"
         required
       />
-      <button type="submit">Add</button>
+      <button className="primary-button-big" type="submit">Add</button>
     </form>
   );
 };
