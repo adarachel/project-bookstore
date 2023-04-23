@@ -17,7 +17,7 @@ const BookForm = () => {
       item_id: Date.now(),
       title,
       author,
-      category: 'Nonfiction',
+      category: 'Fiction',
     };
     dispatch(addBook(newBook));
     dispatch(addNewBook(newBook));
@@ -27,7 +27,7 @@ const BookForm = () => {
 
   return (
     <form className="Add-form" onSubmit={handleSubmit}>
-      <h2>ADD NEW BOOK</h2>
+      <h2>ADD A NEW BOOK</h2>
       <input
         className="input title-input"
         id="title"
